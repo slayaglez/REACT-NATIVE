@@ -13,7 +13,7 @@ Arranque: `cd dossier-react-native && npx expo start` y pulsar `a` con el emulad
 
 **Captura:**
 
-![Práctica 1](capturas/practica01.png)
+<img src="capturas/practica1.jpg" alt="Práctica 1" width="250">
 
 **Problemas encontrados:** —
 
@@ -25,7 +25,7 @@ Arranque: `cd dossier-react-native && npx expo start` y pulsar `a` con el emulad
 
 **Captura:**
 
-![Práctica 2](capturas/practica02.png)
+<img src="capturas/practica2.jpg" alt="Práctica 2" width="250">
 
 **Problemas encontrados:** el `Button` nativo no admite estilos de `View`; solo se ha cambiado su `color`.
 
@@ -44,7 +44,7 @@ Como ya se ha creado el índice general (apartado «Estructura de carpetas»), `
 
 **Captura:**
 
-![Práctica 3](capturas/practica03.png)
+<img src="capturas/practica3.jpg" alt="Práctica 3" width="250">
 
 **Problemas encontrados:** —
 
@@ -56,7 +56,7 @@ Como ya se ha creado el índice general (apartado «Estructura de carpetas»), `
 
 **Captura:**
 
-![Práctica 4](capturas/practica04.png)
+<img src="capturas/practica4.jpg" alt="Práctica 4" width="250">
 
 **Problemas encontrados:** —
 
@@ -68,8 +68,31 @@ Como ya se ha creado el índice general (apartado «Estructura de carpetas»), `
 
 **Captura:**
 
-![Práctica 5](capturas/practica05.png)
+<img src="capturas/practica5.jpg" alt="Práctica 5" width="250">
 
 **Problemas encontrados:** —
 
 **Estado:** ✅ Completada
+
+## Práctica 6. Sustituir los botones
+
+**Procedimiento:** nuevo componente `src/components/CajaFlexAlert.tsx`, copia de `CajaFlex` en la que los dos `Button` se sustituyen por componentes táctiles personalizados (fondo `navy`, borde negro, ancho fijo y texto en blanco y negrita):
+
+- **`flex + 1`** → `TouchableHighlight` con `underlayColor="#bebebe"`. Al pulsarlo muestra una alerta con `` Alert.alert('Flex', `Creció ${nombre}`) `` y llama a `onMas()`.
+- **`flex - 1`** → `TouchableOpacity` con `activeOpacity={0.5}` que llama a `onMenos()`.
+
+La pantalla `src/screens/Practica6.tsx` reutiliza la lógica de la práctica 5 (tres estados independientes y `Math.max(0, n - 1)` para no bajar de 0), pero importa `CajaFlexAlert`. `CajaFlex` y la práctica 5 no se modifican. Ruta: `src/app/practica06.tsx`.
+
+**Captura:**
+
+<img src="capturas/practica6.jpg" alt="Práctica 6" width="250">
+
+**Problemas encontrados:** `TouchableHighlight` solo admite un hijo y no muestra el resaltado si no tiene `onPress`.
+
+**Estado:** ✅ Completada
+
+---
+
+## Aviso sobre la redacción de este README
+
+Las prácticas las he hecho yo: el código, las decisiones y las pruebas en el emulador. Para ser más eficiente, este README lo ha ido redactando en paralelo un asistente de IA (Claude, mediante Claude Code) a partir de mi código y mis capturas. Después he revisado su contenido para comprobar que describe correctamente lo que hice.
