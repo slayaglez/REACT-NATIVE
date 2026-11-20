@@ -1,5 +1,5 @@
 import { Href, Link } from 'expo-router';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 const apartados: { titulo: string; practicas: [string, string][] }[] = [
   { titulo: 'Primeros pasos', practicas: [['01', 'Hola mundo']] },
@@ -82,14 +82,17 @@ const apartados: { titulo: string; practicas: [string, string][] }[] = [
 
 export default function Index() {
   return (
-    <ScrollView contentContainerStyle={styles.contenedor}>
+    <ScrollView style={styles.fondo} contentContainerStyle={styles.contenedor}>
       <Text style={styles.titulo}>Prácticas de React Native con Expo</Text>
       {apartados.map(({ titulo, practicas }) => (
         <View key={titulo} style={styles.apartado}>
           <Text style={styles.subtitulo}>{titulo}</Text>
           {practicas.map(([id, nombre]) => (
-            <Link key={id} href={`/practica${id}` as Href} style={styles.enlace}>
-              Práctica {id.replace(/^0/, '').replace('_', '.')}. {nombre}
+            <Link key={id} href={`/practica${id}` as Href} asChild>
+              <Pressable style={styles.boton} android_ripple={{ color: '#8fa8ff' }}>
+                <Text style={styles.botonNumero}>Práctica {id.replace(/^0/, '').replace('_', '.')}</Text>
+                <Text style={styles.botonTexto}>{nombre}</Text>
+              </Pressable>
             </Link>
           ))}
         </View>
@@ -99,9 +102,19 @@ export default function Index() {
 }
 
 const styles = StyleSheet.create({
-  contenedor: { padding: 20, gap: 16 },
-  titulo: { fontSize: 22, fontWeight: 'bold' },
+  fondo: { flex: 1, backgroundColor: '#121212' },
+  contenedor: { padding: 20, gap: 24 },
+  titulo: { fontSize: 24, fontWeight: 'bold', color: 'white', textAlign: 'center' },
   apartado: { gap: 8 },
-  subtitulo: { fontSize: 18, fontWeight: '600' },
-  enlace: { color: 'royalblue', fontSize: 16 },
+  subtitulo: { fontSize: 18, fontWeight: '700', color: '#e5e5ea', marginBottom: 4 },
+  boton: {
+    backgroundColor: 'royalblue',
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: 'white',
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+  },
+  botonNumero: { color: '#dbe4ff', fontSize: 13, fontWeight: '600' },
+  botonTexto: { color: 'white', fontSize: 16, fontWeight: '500' },
 });

@@ -61,3 +61,15 @@ Como ya se ha creado el índice general (apartado «Estructura de carpetas»), `
 **Problemas encontrados:** —
 
 **Estado:** ✅ Completada
+
+## Práctica 5. Modificar `flex` dinámicamente
+
+**Procedimiento:** nuevo componente `src/components/CajaFlex.tsx`, una variante de `Caja` sin altura fija (con `height: 100` el `flex` apenas se notaría). Recibe por propiedades `nombre`, `bg`, el valor actual `valorFlex` y dos funciones (`onMas` y `onMenos`), y aplica `{ flex: valorFlex }` a su `View`. La pantalla `src/screens/Practica5.tsx` guarda tres estados independientes (`flex1`, `flex2`, `flex3`, empezando en 1) y pasa a cada caja sus funciones: `n => n + 1` para aumentar y `n => Math.max(0, n - 1)` para disminuir sin bajar de 0. Cada caja muestra su valor actual y el escenario reparte el espacio vertical en proporción a esos valores. `Caja` y la práctica 4 no se modifican. Ruta: `src/app/practica05.tsx`.
+
+**Captura:**
+
+![Práctica 5](capturas/practica05.png)
+
+**Problemas encontrados:** —
+
+**Estado:** ✅ Completada

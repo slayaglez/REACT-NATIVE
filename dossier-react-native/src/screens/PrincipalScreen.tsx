@@ -20,9 +20,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'rgb(170, 170, 170)',
     flex: 1,
-    padding: 30,
+    padding: 10,
   },
   escenario: {
+    width: 300,
     backgroundColor: 'rgb(219, 219, 219)',
     flex: 1,
     gap: 10,
