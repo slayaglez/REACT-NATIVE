@@ -13,7 +13,7 @@ export default function CajaFlex({ nombre, bg = 'green', valorFlex, onMas, onMen
   return (
     <View style={[styles.caja, { backgroundColor: bg, flex: valorFlex }]}>
       <Text style={styles.texto}>
-        {nombre} · flex: {valorFlex}
+        {nombre} - flex: {valorFlex}
       </Text>
       <View style={styles.botones}>
         <Button title="flex + 1" onPress={onMas} />
