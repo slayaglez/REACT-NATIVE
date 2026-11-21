@@ -91,8 +91,75 @@ La pantalla `src/screens/Practica6.tsx` reutiliza la lógica de la práctica 5 (
 
 **Estado:** ✅ Completada
 
+## Práctica 7. Nombre y estilos personalizados
+
+**Procedimiento:** nuevo componente `src/components/CajaEstilo.tsx`, basado en `CajaFlexAlert`, que añade una propiedad opcional `style?: StyleProp<ViewStyle>`. El estilo recibido se combina con el de por defecto en un array:
+
+```tsx
+<View style={[styles.caja, { backgroundColor: bg, flex: valorFlex }, style]}>
+```
+
+Como `style` va el último, sus propiedades sobrescriben las repetidas de `styles.caja`. La pantalla `src/screens/Practica7.tsx` muestra tres cajas con su nombre:
+
+- **Caja A:** sin `style`, con el aspecto por defecto.
+- **Caja B:** esquinas redondeadas (`borderRadius: 20`) y borde dorado más grueso (`borderWidth: 7`).
+- **Caja C:** borde blanco discontinuo (`borderStyle: 'dashed'`) y muy redondeado.
+
+Se mantiene la lógica de `flex` de las prácticas 5 y 6. Ruta: `src/app/practica07.tsx`.
+
+**Captura:**
+
+<img src="capturas/practica7.jpg" alt="Práctica 7" width="250">
+
+**Problemas encontrados:** el orden del array de estilos importa: si `style` se coloca antes que el estilo por defecto, no sobrescribe nada.
+
+**Estado:** ✅ Completada
+
+## Práctica 8. Círculos dinámicos
+
+**Procedimiento:** nuevo componente reutilizable `src/components/BotonControl.tsx`, un botón personalizado con `TouchableOpacity` (recibe `texto`, `color`, `onPress` y un `activo` opcional que añade un borde blanco). La pantalla `src/screens/Practica8.tsx` guarda tres estados:
+
+- `circulos`: lista de `{ id, color }`, vacía al principio.
+- `envolver`: alterna `flexWrap` entre `'wrap'` y `'nowrap'`.
+- `enFila`: alterna `flexDirection` entre `'row'` y `'column'`.
+
+«Agregar círculo» añade un elemento con un color calculado a partir de su número; cada canal RGB se limita con `Math.min(255, valor)`. Los círculos se pintan con `map`, usando el `id` como `key` estable, y el texto de los otros dos botones indica el valor activo. Ruta: `src/app/practica08.tsx`.
+
+**Captura:**
+
+<img src="capturas/practica8.jpg" alt="Práctica 8" width="250">
+
+**Problemas encontrados:** con `nowrap` los círculos que no caben se salen del escenario en lugar de pasar a la siguiente línea, que es justo el efecto que se quiere observar.
+
+**Estado:** ✅ Completada
+
+## Práctica 9. Distribución, alineación e imágenes
+
+**Procedimiento:** la pantalla `src/screens/Practica9.tsx` contiene:
+
+- Un `TextInput` controlado para escribir el valor de `justifyContent`. Los valores admitidos se definen con un tipo unión (`NonNullable<ViewStyle['justifyContent']>`) y una función `esJustificacion` que actúa como *type guard*. Solo se aplica un valor válido; si no lo es, el borde del campo se pone rojo y se mantiene el último correcto.
+- Una fila de `BotonControl` (contenedor anidado con `flexDirection: 'row'`) para elegir `alignItems`: `flex-start`, `center`, `flex-end` o `stretch`. El botón activo se resalta.
+- Un texto con la alineación activa (`justifyContent` y `alignItems`).
+- Un escenario con `flexWrap: 'nowrap'` y tres imágenes: `icon.png` y `react-logo.png` cargadas con `require` desde `assets/images/`, y una remota con `{ uri: 'https://reactnative.dev/img/tiny_logo.png' }`.
+
+Las imágenes usan `minWidth` en lugar de `width` y `resizeMode: 'contain'` para que el efecto de `stretch` se aprecie. Ruta: `src/app/practica09.tsx`.
+
+**Captura:**
+
+<img src="capturas/practica9.jpg" alt="Práctica 9" width="250">
+
+**Problemas encontrados:**
+
+- La ruta de `require` debe ser estática; no se puede construir con una variable.
+- Un `string` cualquiera no se puede asignar a `justifyContent` en TypeScript, por eso hace falta el tipo unión y la comprobación.
+- Con un `width` fijo en las imágenes, `alignItems: 'stretch'` no tiene efecto visible.
+
+**Estado:** ✅ Completada
+
 ---
 
 ## Aviso sobre la redacción de este README
 
 Las prácticas las he hecho yo: el código, las decisiones y las pruebas en el emulador. Para ser más eficiente, este README lo ha ido redactando en paralelo un asistente de IA (Claude, mediante Claude Code) a partir de mi código y mis capturas. Después he revisado su contenido para comprobar que describe correctamente lo que hice.
+
+En las prácticas 7, 8 y 9 me quedé atascado y el asistente generó un código de referencia. Lo he estudiado en profundidad y probado en mi dispositivo.
