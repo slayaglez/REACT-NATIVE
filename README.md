@@ -162,4 +162,4 @@ Las imágenes usan `minWidth` en lugar de `width` y `resizeMode: 'contain'` para
 
 Las prácticas las he hecho yo: el código, las decisiones y las pruebas en el emulador. Para ser más eficiente, este README lo ha ido redactando en paralelo un asistente de IA (Claude, mediante Claude Code) a partir de mi código y mis capturas. Después he revisado su contenido para comprobar que describe correctamente lo que hice.
 
-En las prácticas 7, 8 y 9 me quedé atascado y el asistente generó un código de referencia. Lo he estudiado en profundidad y probado en mi dispositivo.
+En las prácticas 8 y 9 me quedé atascado y el asistente generó un código de referencia. Lo he estudiado en profundidad y probado en mi dispositivo.
